@@ -6,11 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/AATree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/AATreePrettyPrinter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/AATree.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/catch.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Flags.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Flags.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Node.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/catch.hpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
