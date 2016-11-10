@@ -13,6 +13,11 @@ AATree<T>::AATree()
 {
     // TODO: Create sentinel node (i.e. bottomNode)
     // assign the sentinel node to root, lastNode, and deletedNode
+    bottomNode = new Node<T>(-1, bottomNode, bottomNode,0);
+    root = bottomNode;
+    lastNode = bottomNode;
+    deletedNode = bottomNode;
+
 }
 #endif
 
@@ -24,6 +29,8 @@ AATree<T>::~AATree()
 {
     // TODO: Remove any nodes
     // don't forget to deallocate bottomNode
+    removeAllNodes(root);
+    delete bottomNode;
 }
 #endif
 
@@ -34,7 +41,8 @@ AATree<T>::~AATree()
 template <class T>
 bool AATree<T>::isEmpty()
 {
-
+    if(root == bottomNode) { return true; }
+    return false;
 }
 #endif
 
@@ -45,6 +53,8 @@ bool AATree<T>::isEmpty()
 template <class T>
 bool AATree<T>::find(const T & x)
 {
+    if(findNode(root,x)->data != -1) { return true; }
+    return false;
 
 }
 #endif
@@ -56,7 +66,12 @@ bool AATree<T>::find(const T & x)
 template <class T>
 Node<T> *AATree<T>::findNode(Node<T> *node, const T &x)
 {
-
+    while( node != bottomNode and node->data != x)
+    {
+     if( x < node->data){node = node->left;}
+     else {node = node->right;}
+    }
+    return node;
 }
 #endif
 
@@ -67,7 +82,7 @@ Node<T> *AATree<T>::findNode(Node<T> *node, const T &x)
 template <class T>
 const T& AATree<T>::findMin()
 {
-
+    return findMinNode(root)->data;
 }
 #endif
 
@@ -78,7 +93,8 @@ const T& AATree<T>::findMin()
 template <class T>
 Node<T> *AATree<T>::findMinNode(Node<T> *node)
 {
-
+    while( node->left != bottomNode){ node = node->left;}
+    return node;
 }
 #endif
 
@@ -89,7 +105,7 @@ Node<T> *AATree<T>::findMinNode(Node<T> *node)
 template <class T>
 const T& AATree<T>::findMax()
 {
-
+    return findMaxNode(root)->data;
 }
 #endif
 
@@ -100,6 +116,9 @@ const T& AATree<T>::findMax()
 template <class T>
 Node<T> *AATree<T>::findMaxNode(Node<T> *node)
 {
+    while( node->right != bottomNode){node = node->right;}
+    return node;
+
 
 }
 #endif
@@ -111,7 +130,7 @@ Node<T> *AATree<T>::findMaxNode(Node<T> *node)
 template <class T>
 void AATree<T>::insert(const T &x)
 {
-
+    insertNode(root,x);
 }
 #endif
 
@@ -120,7 +139,7 @@ void AATree<T>::insert(const T &x)
 #if INSERTNODE || ALL
 // TODO: insertNode() private method
 template <class T>
-bool AATree<T>::find(const T & x)
+void AATree<T>::insertNode(Node<T> *&node, const T &x)
 {
 
 }
@@ -131,9 +150,9 @@ bool AATree<T>::find(const T & x)
 #if REMOVE || ALL
 // TODO: remove() method
 template <class T>
-void AATree<T>::insertNode(Node<T> *&node, const T &x)
+void AATree<T>::remove(const T &x)
 {
-
+    removeNode(root , x);
 }
 #endif
 
@@ -177,7 +196,8 @@ void AATree<T>::split(Node<T> *&node)
 template <class T>
 void AATree<T>::makeEmpty()
 {
-
+    removeAllNodes(root);
+    root = bottomNode;
 }
 #endif
 
@@ -188,7 +208,8 @@ void AATree<T>::makeEmpty()
 template <class T>
 void AATree<T>::removeAllNodes(Node<T> *node)
 {
-
+    makeEmpty();
+    delete bottomNode;
 }
 #endif
 
