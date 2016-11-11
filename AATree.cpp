@@ -174,7 +174,12 @@ void AATree<T>::removeNode(Node<T> *&node, const T &x)
 template <class T>
 void AATree<T>::skew(Node<T> *&node)
 {
-
+     Node<T> *occupyNode;
+     if(node->left->level == node->level)
+     {
+           begin{rotate right}
+     }
+     
 }
 #endif
 
@@ -208,8 +213,7 @@ void AATree<T>::makeEmpty()
 template <class T>
 void AATree<T>::removeAllNodes(Node<T> *node)
 {
-    makeEmpty();
-    delete bottomNode;
+    
 }
 #endif
 
